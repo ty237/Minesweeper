@@ -1,8 +1,8 @@
 import de.bezier.guido.*;
-final int NUM_ROWS = 9;
-final int NUM_COLS = 9;
-final bool gameEnd = false;
-final int numMines = 5;
+final private int NUM_ROWS = 9;
+final private int NUM_COLS = 9;
+final private int numMines = 1;
+private boolean gameEnd = false;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons;  //2d array of minesweeper buttons
 private ArrayList<MSButton> mines = new ArrayList<MSButton>(); //ArrayList of just the minesweeper buttons that are mined
@@ -37,16 +37,19 @@ public void setMines()
 
 public void draw ()
 {
-    if (gameEnd) noLoop();
-    background( 0 );
-    if(isWon() == true)
-           gameEnd = true;
-           for (int cuRow = 0; cuRow < buttons.length; cuRow++) {
-              for (int cuCol = 0; cuCol < buttons[cuRow].length; cuCol++) {
-                buttons[cuRow][cuCol].unFlag();
-              }
-            }
-        displayWinningMessage();
+    if (gameEnd) {
+      noLoop();
+    } else {
+    if(isWon() == true) {
+      for (int cuRow = 0; cuRow < buttons.length; cuRow++) {
+         for (int cuCol = 0; cuCol < buttons[cuRow].length; cuCol++) {
+            buttons[cuRow][cuCol].unFlag();
+         }
+      }
+      gameEnd = true;
+      displayWinningMessage();
+    }
+    }
 }
 public boolean isWon()
 {
