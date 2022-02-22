@@ -119,6 +119,10 @@ public class MSButton
     public void click() {
       clicked = true;
     }
+    
+    public void unFlag() {
+      flagged = false;
+    }
 
     public boolean isClicked() {
       return clicked;
@@ -137,6 +141,7 @@ public class MSButton
         else if(mines.contains(this)) {
             for (int cuRow = 0; cuRow < buttons.length; cuRow++) {
               for (int cuCol = 0; cuCol < buttons[cuRow].length; cuCol++) {
+                buttons[cuRow][cuCol].unFlag();
                 buttons[cuRow][cuCol].click();
               }
             }
