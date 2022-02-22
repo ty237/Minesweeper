@@ -38,6 +38,11 @@ public void draw ()
 {
     background( 0 );
     if(isWon() == true)
+           for (int cuRow = 0; cuRow < buttons.length; cuRow++) {
+              for (int cuCol = 0; cuCol < buttons[cuRow].length; cuCol++) {
+                buttons[cuRow][cuCol].unFlag();
+              }
+            }
         displayWinningMessage();
 }
 public boolean isWon()
